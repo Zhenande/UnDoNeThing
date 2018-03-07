@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="fragment.TaiKhoanFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/index"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/taiKhoan_txtTBDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="3dp"
+            android:layout_weight="2"
+            android:text="@string/tbDangNhap"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/taiKhoan_buttonDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#f45042"
+            android:text="@string/dangNhap" />
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/taiKhoan_buttonThongBao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_notification"
+            style="@style/luaChonTrongTaiKhoan"
+            android:text="@string/thongBao" />
+
+        <Button
+            android:id="@+id/taiKhoan_buttonLichSuDatCho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_history"
+            style="@style/luaChonTrongTaiKhoan"
+            android:text="@string/lichSuDatCho" />
+
+        <Button
+            android:id="@+id/taiKhoan_buttonDanhSachYeuThich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_heart"
+            style="@style/luaChonTrongTaiKhoan"
+            android:text="@string/danhSachYeuThich" />
+
+        <Button
+            android:id="@+id/taiKhoan_buttonCapNhatTaiKhoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_user"
+            style="@style/luaChonTrongTaiKhoan"
+            android:text="@string/capNhatTaiKhoan" />
+
+        <Button
+            android:id="@+id/taiKhoan_buttonNgonNgu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_logout"
+            style="@style/luaChonTrongTaiKhoan"
+            android:text="@string/ngonNgu" />
+
+        <Button
+            android:id="@+id/taiKhoan_buttonDangXuat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_logout"
+            style="@style/luaChonTrongTaiKhoan"
+            android:text="@string/dangXuat" />
+    
+</LinearLayout>

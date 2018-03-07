@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">KhoaLuan</string>
+    <string name="searchHint">Tìm kiếm trên ...</string>
+    <string name="trangChu">Trang Chủ</string>
+    <string name="danhMuc">Danh Mục</string>
+    <string name="taiKhoan">Tài Khoản</string>
+    <string name="tbDangNhap">Vui lòng đăng nhập</string>
+    <string name="dangNhap">Đăng nhập</string>
+    <string name="dangXuat">Đăng xuất</string>
+    <string name="dangKy">Đăng ký</string>
+    <string name="thongBao">Thông báo</string>
+    <string name="lichSuDatCho">Lịch sử đặt chỗ</string>
+    <string name="danhSachYeuThich">Danh sách yêu thích</string>
+    <string name="capNhatTaiKhoan">Cập nhật tài khoản</string>
+    <string name="ngonNgu">Ngôn ngữ</string>
+    <string name="email">Địa chỉ Email</string>
+    <string name="sodienthoai">Số điện thoại</string>
+    <string name="matKhau">Mật khẩu</string>
+    <string name="quenMatKhau">Quên mật khẩu?</string>
+    <string name="dangNhapBangCachKhac">Đăng nhập bằng cách khác</string>
+    <string name="nhapLaiMatKhau">Nhập lại mật khẩu</string>
+</resources>

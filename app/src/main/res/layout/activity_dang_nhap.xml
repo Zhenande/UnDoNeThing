@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.abc.khoaluan.DangNhapActivity">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/dangNhap_tab_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dangNhap_tab_dangNhap"
+            android:text="@string/dangNhap" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dangNhap_tab_dangKy"
+            android:text="@string/dangKy" />
+    </android.support.design.widget.TabLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dangNhap_view_pager"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/dangNhap_viewLeft"
+                android:layout_width="0dp"
+                android:layout_marginVertical="8dp"
+                android:layout_weight="1"
+                android:layout_height="1dp"
+                android:background="@android:drawable/screen_background_dark_transparent" />
+
+            <TextView
+                android:id="@+id/dangNhap_dnBangCachKhac"
+                android:layout_width="0dp"
+                android:gravity="center_horizontal"
+                android:layout_weight="2"
+                android:layout_height="20dp"
+                android:text="@string/dangNhapBangCachKhac" />
+
+            <View
+                android:id="@+id/dangNhap_viewRight"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginVertical="8dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/screen_background_dark_transparent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/dangNhap_buttonFacebook"
+                    android:src="@drawable/sign_in_facebook"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/dangNhap_buttonGoogle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sign_in_google" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

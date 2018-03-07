@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="fragment.DangKyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+            <TextView
+                android:id="@+id/dangKy_txtSoDienThoai"
+                android:text="@string/sodienthoai"
+                android:layout_marginTop="100dp"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/dangKy_editTxtSoDienThoai"
+                android:hint="@string/sodienthoai"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/dangKy_txtMatKhau"
+                android:layout_below="@id/dangKy_txtSoDienThoai"
+                android:text="@string/matKhau"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/dangKy_editTxtMatKhau"
+                android:layout_below="@id/dangKy_txtMatKhau"
+                android:hint="@string/matKhau"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/dangKy_txtNhapLaiMatKhau"
+                android:layout_below="@id/dangKy_txtMatKhau"
+                android:text="@string/nhapLaiMatKhau"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/dangKy_editTxtNhapLaiMatKhau"
+                android:layout_below="@id/dangKy_txtNhapLaiMatKhau"
+                android:hint="@string/nhapLaiMatKhau"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/dangKy_buttondangKy"
+                android:text="@string/dangKy"
+                android:layout_below="@id/dangKy_editTxtNhapLaiMatKhau"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+</LinearLayout>
