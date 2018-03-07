@@ -4,6 +4,10 @@
     <string name="trangChu">Trang Chủ</string>
     <string name="danhMuc">Danh Mục</string>
     <string name="taiKhoan">Tài Khoản</string>
+    <string name="topFollow">Top Yêu Thích</string>
+    <string name="topHot">Top Hot</string>
+    <string name="topNew">Top Mới</string>
+    <string name="more">Xem thêm...</string>
     <string name="tbDangNhap">Vui lòng đăng nhập</string>
     <string name="dangNhap">Đăng nhập</string>
     <string name="dangXuat">Đăng xuất</string>

@@ -50,8 +50,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById()
-
     }
 }

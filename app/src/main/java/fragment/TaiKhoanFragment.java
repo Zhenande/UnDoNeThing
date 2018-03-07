@@ -4,6 +4,7 @@ package fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,8 @@ public class TaiKhoanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View rootView = inflater.inflate(R.layout.fragment_tai_khoan, container, false);
-        buttonDangNhap = rootView.findViewById(R.id.taiKhoan_buttonDangNhap);
+        View view = inflater.inflate(R.layout.fragment_tai_khoan, container, false);
+        buttonDangNhap = view.findViewById(R.id.taiKhoan_buttonDangNhap);
         buttonDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +40,7 @@ public class TaiKhoanFragment extends Fragment {
             }
         });
 
-        return rootView;
+        return view;
     }
 
 }
