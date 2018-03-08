@@ -1,40 +1,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/main_ads"
+                android:src="@drawable/ad_page1"
+                android:scaleType="fitXY"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:layout_width="match_parent"
+                android:layout_height="175dp" />
 
             <Button
                 android:id="@+id/main_searchButton"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@android:drawable/screen_background_light_transparent"
+                android:layout_below="@+id/main_ads"
                 android:drawableStart="@drawable/icon_search"
                 android:hint="@string/searchHint"
                 android:textAlignment="textStart" />
 
 
-            <ImageView
-                android:id="@+id/main_ads"
-                android:src="@drawable/ad_page1"
-                android:scaleType="centerCrop"
-                android:background="@android:drawable/screen_background_light_transparent"
-                android:layout_width="match_parent"
-                android:layout_height="175dp" />
-
-        </FrameLayout>
+        </RelativeLayout>
 
     <LinearLayout
         android:orientation="vertical"
+        android:layout_weight="1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -62,14 +64,56 @@
             android:id="@+id/main_top_hot_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0" />
+            android:layout_weight="1.0" >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/main_cardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="120dp"/>
+        </FrameLayout>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/main_top_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/topNew"
+                android:layout_weight="2.0"
+                style="@style/main_top_title" />
+
+            <TextView
+                android:id="@+id/main_top_new_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/more"
+                style="@style/main_more_text" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/main_top_new_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_cardView_new"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
