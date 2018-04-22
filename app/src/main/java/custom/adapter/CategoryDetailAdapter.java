@@ -20,9 +20,7 @@ import java.util.ArrayList;
 import holder.CategoryDetailViewHolder;
 import model.CategoryDetail;
 
-/**
- * Created by vpmn-os-quocnb on 3/8/2018.
- */
+
 
 public class CategoryDetailAdapter extends RecyclerView.Adapter<CategoryDetailViewHolder> {
 

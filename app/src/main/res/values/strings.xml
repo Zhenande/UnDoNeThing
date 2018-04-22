@@ -1,4 +1,14 @@
 <resources>
+
+    <string name="required">Required</string>
+    <string name="not_match_password">The password does not match. Please input again!</string>
+    <string name="wrong_phone_number_type">Your phone number does not correct. Please check again!</string>
+    <string name="phone_verify_content">We have sent to your phone number a verify code. Input that code below to active your account.</string>
+
+
+    <string name="button_resend_code">Resend Code (%d)</string>
+    <string name="exit_app_noti">Press back again to exit app.</string>
+
     <string name="app_name">KhoaLuan</string>
     <string name="searchHint">Tìm kiếm trên ...</string>
     <string name="trangChu">Trang Chủ</string>
@@ -24,6 +34,5 @@
     <string name="dangNhapBangCachKhac">Đăng nhập bằng cách khác</string>
     <string name="nhapLaiMatKhau">Nhập lại mật khẩu</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

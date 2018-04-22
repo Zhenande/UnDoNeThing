@@ -18,9 +18,6 @@ import java.util.ArrayList;
 import holder.CategoryViewHolder;
 import model.Category;
 
-/**
- * Created by vpmn-os-quocnb on 3/8/2018.
- */
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 

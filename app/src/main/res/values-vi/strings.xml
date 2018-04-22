@@ -1,9 +1,22 @@
 <resources>
+
+    <string name="required">Bắt buộc</string>
+    <string name="not_match_password">Mật khẩu không trùng nhau. Vui lòng nhập lại!</string>
+    <string name="wrong_phone_number_type">Số điện thoại của bạn không hợp lệ. Vui lòng nhập lại.</string>
+    <string name="phone_verify_content">Chúng tôi vừa mới gửi đến số điện thoại của bạn mã kích hoạt. Vui lòng nhập mã kích hoạt vào ô bên dưới để kích hoạt tài khoản của bạn.</string>
+
+    <string name="button_resend_code">Gửi lại mã (%d)</string>
+    <string name="exit_app_noti">Bấm nút back lần nữa để thoát khỏi ứng dụng.</string>
+
     <string name="app_name">KhoaLuan</string>
     <string name="searchHint">Tìm kiếm trên ...</string>
     <string name="trangChu">Trang Chủ</string>
     <string name="danhMuc">Danh Mục</string>
     <string name="taiKhoan">Tài Khoản</string>
+    <string name="topFollow">Top Yêu Thích</string>
+    <string name="topHot">Top Hot</string>
+    <string name="topNew">Top Mới</string>
+    <string name="more">Xem thêm...</string>
     <string name="tbDangNhap">Vui lòng đăng nhập</string>
     <string name="dangNhap">Đăng nhập</string>
     <string name="dangXuat">Đăng xuất</string>
@@ -19,4 +32,6 @@
     <string name="quenMatKhau">Quên mật khẩu?</string>
     <string name="dangNhapBangCachKhac">Đăng nhập bằng cách khác</string>
     <string name="nhapLaiMatKhau">Nhập lại mật khẩu</string>
+
+
 </resources>

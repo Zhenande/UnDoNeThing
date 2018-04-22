@@ -6,8 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import Utils.FragmentDangNhapPagerAdapter;
-import Utils.FragmentMainPagerAdapter;
+import adapter.FragmentDangNhapPagerAdapter;
 
 public class DangNhapActivity extends AppCompatActivity {
 

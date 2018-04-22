@@ -1,20 +1,22 @@
 package com.example.abc.khoaluan;
 
-import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
-import Utils.FragmentMainPagerAdapter;
+import adapter.FragmentMainPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private FragmentMainPagerAdapter adapter;
     private TabLayout tabLayout;
+    private boolean doubleBackToSignOutPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,5 +52,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToSignOutPressedOnce) {
+            this.finishAffinity();
+            return;
+        }
+
+        this.doubleBackToSignOutPressedOnce = true;
+        Toast.makeText(this, getResources().getString(R.string.exit_app_noti), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToSignOutPressedOnce=false;
+            }
+        }, 2000);
     }
 }

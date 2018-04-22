@@ -7,9 +7,6 @@ import android.widget.TextView;
 
 import com.example.abc.khoaluan.R;
 
-/**
- * Created by vpmn-os-quocnb on 3/8/2018.
- */
 
 public class CategoryDetailViewHolder extends RecyclerView.ViewHolder {
 

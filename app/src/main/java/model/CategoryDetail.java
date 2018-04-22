@@ -1,8 +1,6 @@
 package model;
 
-/**
- * Created by vpmn-os-quocnb on 3/8/2018.
- */
+
 
 public class CategoryDetail {
 
