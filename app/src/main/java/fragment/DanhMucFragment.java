@@ -17,9 +17,8 @@ import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import java.util.ArrayList;
 
-import custom.adapter.CategoryAdapter;
-import custom.adapter.CategoryDetailAdapter;
-import model.CardModel;
+import adapter.CategoryAdapter;
+import adapter.CategoryDetailAdapter;
 import model.Category;
 import model.CategoryDetail;
 

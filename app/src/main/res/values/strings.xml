@@ -8,6 +8,7 @@
 
     <string name="button_resend_code">Resend Code (%d)</string>
     <string name="exit_app_noti">Press back again to exit app.</string>
+    <string name="loading_dialog">Loading</string>
 
     <string name="app_name">KhoaLuan</string>
     <string name="searchHint">Tìm kiếm trên ...</string>

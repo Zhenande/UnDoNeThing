@@ -1,29 +1,23 @@
 package fragment;
 
 
-import android.content.Context;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import com.example.abc.khoaluan.R;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import java.util.ArrayList;
 
-import custom.adapter.MainHorizontalAdapter;
+import adapter.MainHorizontalAdapter;
 import model.CardModel;
 
 

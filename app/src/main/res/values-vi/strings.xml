@@ -7,6 +7,7 @@
 
     <string name="button_resend_code">Gửi lại mã (%d)</string>
     <string name="exit_app_noti">Bấm nút back lần nữa để thoát khỏi ứng dụng.</string>
+    <string name="loading_dialog">Đang xử lý</string>
 
     <string name="app_name">KhoaLuan</string>
     <string name="searchHint">Tìm kiếm trên ...</string>

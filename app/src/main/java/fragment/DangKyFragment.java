@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.abc.khoaluan.MainActivity;
 import com.example.abc.khoaluan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +28,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -58,13 +63,12 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
     public EditText edVerifyCode;
     private Activity activity;
     private FirebaseAuth mAuth;
-    private String phoneNameProvider;
-    private boolean isOnInputCode = false;
-    private boolean retext;
     private String mVerificationID;
     private PhoneAuthProvider.ForceResendingToken tokenResend;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
-
+    private MaterialDialog dialog;
+    private FirebaseFirestore db;
+    private String TAG = "DangKyFragment";
 
     public DangKyFragment() {
         // Required empty public constructor
@@ -86,6 +90,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
         ButterKnife.bind(this,view);
         showLayoutSignUp();
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
 //        edSoDienThoai.addTextChangedListener(new TextWatcher() {
 ////            @Override
@@ -127,12 +132,13 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-
+                Log.i(TAG,e.getMessage());
             }
 
             @Override
             public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 showLayoutInputCode();
+                closeLoadingDialog();
                 mVerificationID = s;
                 tokenResend = forceResendingToken;
                 edVerifyCode.addTextChangedListener(new TextWatcher() {
@@ -149,6 +155,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void afterTextChanged(Editable s) {
                         if(s.length() == 6){
+                            showLoadingDialog();
                             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationID, s.toString());
                             signInWithPhoneNumber(credential);
                         }
@@ -176,7 +183,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
     * */
     private void doRegistCustomer() {
         if(validInput()){
-
+            showLoadingDialog();
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
                     getPhoneNumberSend(),
                     60,
@@ -186,61 +193,71 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private void showLoadingDialog(){
+        dialog = new MaterialDialog.Builder(view.getContext())
+                .backgroundColor(view.getContext().getResources().getColor(R.color.primary))
+                .customView(R.layout.loading_dialog, true)
+                .build();
+        dialog.show();
+    }
+
+    private void closeLoadingDialog(){
+        dialog.dismiss();
+    }
+
     private String getPhoneNumberSend() {
         String phone = edSoDienThoai.getText().toString();
         String phoneSend = "+84" + phone.substring(1,phone.length());
         return phoneSend;
     }
 
-    private String getNameProvider(String inputPhone) {
-      String result = "";
-      if(!retext){
-          String[] compare = Constants.VIETTEL_PROVIDER;
-          for(String s : compare){
-              if(s.equals(inputPhone)){
-                  return "Viettel";
-              }
-          }
-          compare = Constants.MOBIFONE_PROVIDER;
-          for(String s : compare){
-              if(s.equals(inputPhone)){
-                  return "Mobifone";
-              }
-          }
-          compare = Constants.VINAPHONE_PROVIDER;
-          for(String s : compare){
-              if(s.equals(inputPhone)){
-                  return "Vinaphone";
-              }
-          }
-          compare = Constants.VIETNAMOBILE_PROVIDER;
-          for(String s : compare){
-              if(s.equals(inputPhone)){
-                  return "Vietnamobile";
-              }
-          }
-          compare = Constants.GMOBILE_PROVIDER;
-          for(String s : compare){
-              if(s.equals(inputPhone)){
-                  return "GMobile";
-              }
-          }
-      }
-      return result;
-    }
+//    private String getNameProvider(String inputPhone) {
+//      String result = "";
+//      if(!retext){
+//          String[] compare = Constants.VIETTEL_PROVIDER;
+//          for(String s : compare){
+//              if(s.equals(inputPhone)){
+//                  return "Viettel";
+//              }
+//          }
+//          compare = Constants.MOBIFONE_PROVIDER;
+//          for(String s : compare){
+//              if(s.equals(inputPhone)){
+//                  return "Mobifone";
+//              }
+//          }
+//          compare = Constants.VINAPHONE_PROVIDER;
+//          for(String s : compare){
+//              if(s.equals(inputPhone)){
+//                  return "Vinaphone";
+//              }
+//          }
+//          compare = Constants.VIETNAMOBILE_PROVIDER;
+//          for(String s : compare){
+//              if(s.equals(inputPhone)){
+//                  return "Vietnamobile";
+//              }
+//          }
+//          compare = Constants.GMOBILE_PROVIDER;
+//          for(String s : compare){
+//              if(s.equals(inputPhone)){
+//                  return "GMobile";
+//              }
+//          }
+//      }
+//      return result;
+//    }
 
     /*
     * @author: ManhLD
     * Display the layout of enter verify code
     * */
     private void showLayoutInputCode() {
-        isOnInputCode = true;
         llInputCode.setVisibility(View.VISIBLE);
         llSignUpInfor.setVisibility(View.GONE);
     }
 
     private void showLayoutSignUp(){
-        isOnInputCode = false;
         llInputCode.setVisibility(View.GONE);
         llSignUpInfor.setVisibility(View.VISIBLE);
     }
@@ -253,9 +270,28 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
                     if(task.isSuccessful()){
                         GlobalVariable.sign_in = true;
                         Log.i("DangKy", "SignInSuccess: " + task.getResult().getUser().getPhoneNumber());
-                        Intent i = new Intent(view.getContext(), MainActivity.class);
-                        startActivity(i);
+                        createNewCustomer();
                     }
+                }
+            });
+    }
+
+    private void createNewCustomer() {
+        Map<String, Object> customer = new HashMap<>();
+        customer.put(Constants.ADDRESS,"");
+        customer.put(Constants.CITY,"");
+        customer.put(Constants.CONTACT,edSoDienThoai.getText().toString());
+        customer.put(Constants.DISTRICT,"");
+        customer.put(Constants.NAME,"");
+        customer.put(Constants.PASSWORD,edMatKhau.getText().toString());
+        db.collection(Constants.CUSTOMER)
+            .add(customer)
+            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentReference> task) {
+                    closeLoadingDialog();
+                    Intent i = new Intent(view.getContext(), MainActivity.class);
+                    startActivity(i);
                 }
             });
     }
