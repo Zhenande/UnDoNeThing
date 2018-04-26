@@ -8,6 +8,11 @@
     <string name="button_resend_code">Gửi lại mã (%d)</string>
     <string name="exit_app_noti">Bấm nút back lần nữa để thoát khỏi ứng dụng.</string>
     <string name="loading_dialog">Đang xử lý</string>
+    <string name="new_user">Người sử dụng mới</string>
+
+    <string name="hello_text">Xin chào, %s</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_out">Đăng xuất</string>
 
     <string name="app_name">KhoaLuan</string>
     <string name="searchHint">Tìm kiếm trên ...</string>

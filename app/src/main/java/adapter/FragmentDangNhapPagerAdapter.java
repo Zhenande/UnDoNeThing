@@ -32,7 +32,7 @@ public class FragmentDangNhapPagerAdapter extends android.support.v4.app.Fragmen
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0: return new DangNhapFragment();
+            case 0: return new DangNhapFragment((Activity)mContext);
             case 1: return new DangKyFragment((Activity)mContext);
             default: return new DangNhapFragment();
         }

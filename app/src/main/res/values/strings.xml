@@ -4,11 +4,15 @@
     <string name="not_match_password">The password does not match. Please input again!</string>
     <string name="wrong_phone_number_type">Your phone number does not correct. Please check again!</string>
     <string name="phone_verify_content">We have sent to your phone number a verify code. Input that code below to active your account.</string>
-
+    <string name="hello_text">Hello, %s</string>
 
     <string name="button_resend_code">Resend Code (%d)</string>
     <string name="exit_app_noti">Press back again to exit app.</string>
     <string name="loading_dialog">Loading</string>
+    <string name="new_user">New User</string>
+
+    <string name="sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
 
     <string name="app_name">KhoaLuan</string>
     <string name="searchHint">Tìm kiếm trên ...</string>

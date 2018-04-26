@@ -6,16 +6,17 @@
     tools:context="fragment.DanhMucFragment">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/Danhmuc_RecyclerView_Category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+    <ListView
+        android:id="@+id/Category_District"
+        android:layout_weight="2.5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/DanhMuc_RecyclerView_Detail_Category"
+        android:id="@+id/Category_ReV_Detail_Category"
         android:layout_marginStart="20dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

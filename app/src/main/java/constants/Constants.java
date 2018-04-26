@@ -11,6 +11,9 @@ public class Constants {
     public static final String[] VINAPHONE_PROVIDER = {"091","094","088","0123","0124","0125","0127","0129"};
     public static final String[] VIETNAMOBILE_PROVIDER = {"092","0188","0186"};
     public static final String[] GMOBILE_PROVIDER = {"099","0199"};
+    public static final String[] HCM_DISTRICT = {"Quận 1","Quận 2","Quận 3","Quận 4","Quận 5","Quận 6","Quận 7","Quận 8","Quận 9","Quận 10","Quận 11","Quận 12","Quận Phú Nhuận","Quận Gò Vấp","Quận Bình Thạnh","Quận Thủ Đức","Quận Bình Tân","Quận Tân Bình","Quận Tân Phú","Huyện Củ Chi","Huyện Hóc Môn","Huyện Bình Chánh","Huyện Nhà Bè","Huyện Cần Giờ"};
+
+    public static final int REQUEST_ACCOUNT_SIGN_IN = 1;
 
     // Field of Customer
     public static final String CUSTOMER = "customer";

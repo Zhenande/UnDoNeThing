@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.example.abc.khoaluan.DangNhapActivity;
 import com.example.abc.khoaluan.MainActivity;
 import com.example.abc.khoaluan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +32,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -39,6 +42,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import constants.Constants;
 import util.GlobalVariable;
+import util.StringEncryption;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,6 +73,11 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
     private MaterialDialog dialog;
     private FirebaseFirestore db;
     private String TAG = "DangKyFragment";
+    private callBackData cbd;
+
+    public interface callBackData{
+        void onReturnData(String name);
+    }
 
     public DangKyFragment() {
         // Required empty public constructor
@@ -78,6 +87,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
     public DangKyFragment(Activity activity) {
         // Required empty public constructor
         this.activity = activity;
+        cbd = (DangNhapActivity)activity;
     }
 
 
@@ -93,35 +103,43 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
         db = FirebaseFirestore.getInstance();
 
 //        edSoDienThoai.addTextChangedListener(new TextWatcher() {
-////            @Override
-////            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-////
-////            }
-////
-////            @SuppressLint("SetTextI18n")
-////            @Override
-////            public void onTextChanged(CharSequence s, int start, int before, int count) {
-////                if(s.length() < 3){
-////                    retext = false;
-////                }
-////                if(s.length() >= 3){
-////                    String namePhoneProvider = getNameProvider(s.toString().substring(0,4));
-////
-////                    if(retext) {
-////                        edSoDienThoai.removeTextChangedListener(this);
-////                        edSoDienThoai.setText(s + " (" + namePhoneProvider + ")");
-////                        edSoDienThoai.requestFocus(s.length());
-////                        edSoDienThoai.addTextChangedListener(this);
-////                    }
-////                    retext = true;
-////                }
-////            }
-////
-////            @Override
-////            public void afterTextChanged(Editable s) {
-////
-////            }
-////        });
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @SuppressLint("SetTextI18n")
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if(s.length() < 3){
+//                    retext = false;
+//                }
+//                if(s.length() >= 3){
+//                    String namePhoneProvider = getNameProvider(s.toString().substring(0,4));
+//
+//                    if(retext) {
+//                        edSoDienThoai.removeTextChangedListener(this);
+//                        edSoDienThoai.setText(s + " (" + namePhoneProvider + ")");
+//                        edSoDienThoai.requestFocus(s.length());
+//                        edSoDienThoai.addTextChangedListener(this);
+//                    }
+//                    retext = true;
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                String password = "";
+//                try {
+//                    password = StringEncryption.SHA1(edMatKhau.getText().toString());
+//                } catch (NoSuchAlgorithmException e) {
+//                    e.printStackTrace();
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
+//                Log.i(TAG,"SHA-1: " + password);
+//            }
+//        });
 
         mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -277,23 +295,31 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
     }
 
     private void createNewCustomer() {
-        Map<String, Object> customer = new HashMap<>();
-        customer.put(Constants.ADDRESS,"");
-        customer.put(Constants.CITY,"");
-        customer.put(Constants.CONTACT,edSoDienThoai.getText().toString());
-        customer.put(Constants.DISTRICT,"");
-        customer.put(Constants.NAME,"");
-        customer.put(Constants.PASSWORD,edMatKhau.getText().toString());
-        db.collection(Constants.CUSTOMER)
-            .add(customer)
-            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentReference> task) {
-                    closeLoadingDialog();
-                    Intent i = new Intent(view.getContext(), MainActivity.class);
-                    startActivity(i);
-                }
-            });
+        try {
+            String password = StringEncryption.SHA1(edMatKhau.getText().toString());
+            Map<String, Object> customer = new HashMap<>();
+            customer.put(Constants.ADDRESS,"");
+            customer.put(Constants.CITY,"");
+            customer.put(Constants.CONTACT,edSoDienThoai.getText().toString());
+            customer.put(Constants.DISTRICT,"");
+            customer.put(Constants.NAME,"");
+            customer.put(Constants.PASSWORD,password);
+            db.collection(Constants.CUSTOMER)
+                    .add(customer)
+                    .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                            closeLoadingDialog();
+//                            Intent i = new Intent(view.getContext(), MainActivity.class);
+//                            startActivity(i);
+                            cbd.onReturnData("");
+                        }
+                    });
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean validInput() {
